@@ -16,12 +16,38 @@ public class MarkdownParse {
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
+
+            /*
+            debug prints
+            System.out.println("openBracket: "+ openBracket);
+            System.out.println("closeBracket: "+closeBracket);
+            System.out.println("openParen: "+openParen);
+            System.out.println("closeParen: "+closeParen);
+            */
+            if(openBracket == -1){
+                break;
+            }
+
+            if(closeBracket == -1){
+                break;
+            }
+
+            if(openParen == -1){
+                break;
+            }
+
+            if(closeParen == -1){
+                break;
+            }
+
+
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
         }
 
         return toReturn;
     }
+
 
 
     public static void main(String[] args) throws IOException {
