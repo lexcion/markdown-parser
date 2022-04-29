@@ -54,4 +54,14 @@ public class MarkdownParseTest {
         assertEquals(links.size(), 1);
         assertEquals(links.get(0), "https://something.com");
     }
+
+    @Test
+    public void markdownTestFile4Fail() throws IOException{
+        MarkdownParse parse = new MarkdownParse();
+        ArrayList<String> links;
+        
+    links = parse.getLinks(Files.readString(Path.of("test-file-4.md")));
+        assertEquals(links.size(), 0);
+        assertEquals(links.get(0), "https://something.com");
+    }
 }
