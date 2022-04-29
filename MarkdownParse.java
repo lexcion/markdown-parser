@@ -41,7 +41,10 @@ public class MarkdownParse {
                 break;
             }
 
-
+            if(openBracket-1 >= 0 && markdown.charAt(openBracket-1) == '!') {
+                break;
+            }
+            
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
         }
