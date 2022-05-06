@@ -41,7 +41,10 @@ public class MarkdownParse {
                 break;
             }
 
-
+            if(openBracket-1 >= 0 && markdown.charAt(openBracket-1) == '!') {
+                break;
+            }
+            
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
         }
@@ -52,7 +55,7 @@ public class MarkdownParse {
 
 
     public static void main(String[] args) throws IOException {
-        System.out.println("MarkdownParse main");
+        System.out.println("MarkdownParse main 4/28/22 7:43pm !!");
         Path fileName = Path.of(args[0]);
         String content = Files.readString(fileName);
         ArrayList<String> links = getLinks(content);

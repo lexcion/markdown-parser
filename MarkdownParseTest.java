@@ -17,9 +17,10 @@ public class MarkdownParseTest {
         MarkdownParse parse = new MarkdownParse();
         ArrayList<String> links;
         
-    links = parse.getLinks(Files.readString(Path.of("test-file.md")));
+        links = parse.getLinks(Files.readString(Path.of("test-file.md")));
         assertEquals(links.size(), 2);
         assertEquals(links.get(0), "https://something.com");
+        
         assertEquals(links.get(1), "some-thing.html");
     }
 
@@ -52,5 +53,16 @@ public class MarkdownParseTest {
     links = parse.getLinks(Files.readString(Path.of("test-file-4.md")));
         assertEquals(links.size(), 1);
         assertEquals(links.get(0), "https://something.com");
+    }
+
+    @Test
+    public void markdownTestFile5() throws IOException{
+        MarkdownParse parse = new MarkdownParse();
+        ArrayList<String> links;
+        
+    links = parse.getLinks(Files.readString(Path.of("test-file-5.md")));
+        assertEquals(links.size(), 2);
+        assertEquals(links.get(0), "https://something.com");
+        assertEquals(links.get(1), "some-thing.html");
     }
 }
