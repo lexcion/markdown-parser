@@ -68,4 +68,52 @@ public class MarkdownParseTest {
 
           
     }
+
+    @Test
+    public void markdownTestSnippet1() throws IOException{
+        MarkdownParse parse = new MarkdownParse();
+        ArrayList<String> links;
+        
+        links = parse.getLinks(Files.readString(Path.of("labreport4tests/snippet1.md")));
+     
+        ArrayList<String> expected = new ArrayList<>(3);
+        expected.add("`google.com");  expected.add("google.com");  expected.add("ucsd.edu"); 
+
+        assertEquals(expected, links);
+    }
+
+    @Test
+    public void markdownTestSnippet2() throws IOException{
+        MarkdownParse parse = new MarkdownParse();
+        ArrayList<String> links;
+        
+        links = parse.getLinks(Files.readString(Path.of("labreport4tests/snippet2.md")));
+
+        ArrayList<String> expected = new ArrayList<>(3);
+        expected.add("a.com");  expected.add("");  expected.add("example.com"); 
+        
+        assertEquals(expected, links);
+
+
+          
+    }
+
+    @Test
+    public void markdownTestSnippet3() throws IOException{
+        MarkdownParse parse = new MarkdownParse();
+        ArrayList<String> links;
+        
+        links = parse.getLinks(Files.readString(Path.of("labreport4tests/snippet3.md")));
+     
+        ArrayList<String> expected = new ArrayList<>(3);
+        expected.add("https://www.twitter.com");  expected.add("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule");  expected.add("https://cse.ucsd.edu/"); 
+
+        assertEquals(expected, links);
+          
+    }
 }
+
+/*
+javac -cp ".;lib\junit-4.13.2.jar;lib\hamcrest-core-1.3.jar" MarkdownParseTest.java
+java -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore MarkdownParseTest
+*/
