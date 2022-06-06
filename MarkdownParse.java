@@ -16,7 +16,7 @@ public class MarkdownParse {
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
-
+            
             /*
             debug prints
             System.out.println("openBracket: "+ openBracket);
@@ -59,7 +59,27 @@ public class MarkdownParse {
     
        
     public static void main(String[] args) throws IOException {
+<<<<<<< Updated upstream
         System.out.println("MarkdownParse main 5/10/2022 !!");
+=======
+
+        if(args[0].charAt(args[0].length() - 1) == '/'){
+            
+            File directory = new File(args[0]);
+            System.out.println("FOLDER DETECTED!");
+            File[] contentsOfDirectory = directory.listFiles();
+        
+            for (int i = 0; i < contentsOfDirectory.length; i++){
+                Path fileName = Path.of(contentsOfDirectory[i].toString());
+                String content = Files.readString(fileName);
+                ArrayList<String> links = getLinks(content);
+                System.out.println(contentsOfDirectory[i].toString());
+                System.out.println(links);
+                
+            }
+            return;
+        }
+>>>>>>> Stashed changes
         Path fileName = Path.of(args[0]);
         String content = Files.readString(fileName);
         ArrayList<String> links = getLinks(content);
